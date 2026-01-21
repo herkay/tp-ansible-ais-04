@@ -1,0 +1,9 @@
+packages:
+  - vim
+  - curl
+  - git
+  - nginx
+
+ssh_port: 2022
+
+admin_user: adminuser

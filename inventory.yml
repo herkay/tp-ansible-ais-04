@@ -1,0 +1,7 @@
+all:
+  children:
+    linux:
+      hosts:
+        srv-test01:
+          ansible_host: 10.4.6.15
+          ansible_user: ansible

@@ -1,0 +1,25 @@
+---
+- name: Create admin user with sudo rights
+  hosts: all
+  become: yes
+  vars:
+    admin_user: admin
+    admin_password: "changeme123"  # À modifier avec un mot de passe sécurisé
+
+  tasks:
+    - name: Create admin user
+      user:
+        name: "{{ admin_user }}"
+        password: "{{ admin_password | password_hash('sha512') }}"
+        groups: sudo
+        shell: /bin/bash
+        createhome: yes
+        state: present
+
+    - name: Add admin user to sudoers without password
+      lineinfile:
+        path: /etc/sudoers
+        state: present
+        regexp: "^{{ admin_user }}"
+        line: "{{ admin_user }} ALL=(ALL) NOPASSWD:ALL"
+        validate: '/usr/sbin/visudo -cf %s'
