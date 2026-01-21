@@ -1,13 +1,10 @@
 ---
 - name: Create admin user with sudo rights
-  hosts: all
+  hosts: linux
   become: yes
-  vars:
-    admin_user: admin
-    admin_password: "changeme123"  # À modifier avec un mot de passe sécurisé
 
   tasks:
-    - name: Create admin user
+    - name: User adlin
       user:
         name: "{{ admin_user }}"
         password: "{{ admin_password | password_hash('sha512') }}"
