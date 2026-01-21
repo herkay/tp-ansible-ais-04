@@ -1,22 +1,14 @@
 ---
-- name: Create admin user with sudo rights
+- name: adminuser
   hosts: linux
-  become: yes
+  become: true
 
   tasks:
-    - name: User adlin
-      user:
+    - name: Admin
+      ansible.builtin.user:
+        append: true
+        group: sudo
         name: "{{ admin_user }}"
-        password: "{{ admin_password | password_hash('sha512') }}"
-        groups: sudo
+        password: "{{ password }}"
         shell: /bin/bash
-        createhome: yes
         state: present
-
-    - name: Add admin user to sudoers without password
-      lineinfile:
-        path: /etc/sudoers
-        state: present
-        regexp: "^{{ admin_user }}"
-        line: "{{ admin_user }} ALL=(ALL) NOPASSWD:ALL"
-        validate: '/usr/sbin/visudo -cf %s'
