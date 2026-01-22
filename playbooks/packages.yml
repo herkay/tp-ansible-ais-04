@@ -2,6 +2,7 @@
 - name: Install_Packages_and_Start_Nginx
   hosts: linux
   become: true
+  gather_facts: false
 
   tasks:
     - name: Install_Packages

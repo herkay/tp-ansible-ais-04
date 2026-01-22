@@ -2,8 +2,14 @@
 - name: Hardening_SSH
   hosts: linux
   become: true
+  gather_facts: false
 
   tasks:
+    - name: Prompt_for_SSH_Port
+      ansible.builtin.pause:
+        prompt: "Quel port SSH souhaitez-vous utiliser ? Par défaut : {{ ssh_port }}"
+      register: ssh_port_input
+
     - name: Change_SSH_Port
       ansible.builtin.lineinfile:
         path: /etc/ssh/sshd_config

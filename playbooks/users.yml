@@ -2,6 +2,7 @@
 - name: Adminuser
   hosts: linux
   become: true
+  gather_facts: false
 
   vars_files:
     - ../vars/pswd.yml

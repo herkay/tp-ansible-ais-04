@@ -1,6 +1,7 @@
 ---
 - name: Execute_Playbooks
   hosts: linux
+  gather_facts: false
 
 - name: Playbook_Users
   ansible.builtin.import_playbook: users.yml
