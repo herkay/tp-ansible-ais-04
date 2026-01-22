@@ -1,0 +1,12 @@
+---
+- name: Execute_Playbooks
+  hosts: linux
+
+- name: Playbook_Users
+  ansible.builtin.import_playbook: users.yml
+
+- name: Playbook_Packages
+  ansible.builtin.import_playbook: packages.yml
+
+- name: Playbook_Security
+  ansible.builtin.import_playbook: security.yml
