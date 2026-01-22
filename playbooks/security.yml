@@ -10,6 +10,10 @@
         prompt: "Quel port SSH souhaitez-vous utiliser ? Par défaut : {{ ssh_port }}"
       register: ssh_port_input
 
+    - name: Set_SSH_Port_Variable
+      ansible.builtin.set_fact:
+        ssh_port: "{{ ssh_port_input.user_input | default(ssh_port) | int }}"
+
     - name: Change_SSH_Port
       ansible.builtin.lineinfile:
         path: /etc/ssh/sshd_config
