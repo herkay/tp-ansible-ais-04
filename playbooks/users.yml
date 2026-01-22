@@ -1,10 +1,10 @@
 ---
-- name: adminuser
+- name: Adminuser
   hosts: linux
   become: true
 
   tasks:
-    - name: Admin
+    - name: Add_Admin_User
       ansible.builtin.user:
         append: true
         group: sudo
