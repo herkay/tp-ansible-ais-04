@@ -3,6 +3,9 @@
   hosts: linux
   become: true
 
+  vars_files:
+    - ../vars/pswd.yml
+
   tasks:
     - name: Add_Admin_User
       ansible.builtin.user:

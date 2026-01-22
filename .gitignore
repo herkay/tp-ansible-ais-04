@@ -1,0 +1,13 @@
+node_modules/
+__pycache__/
+*.pyc
+.vscode/
+.idea/
+*.swp
+*.swo
+*.log
+.env
+.env.local
+*.tmp
+*.bak
+pswd.yml

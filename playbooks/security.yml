@@ -21,6 +21,8 @@
 
   handlers:
     - name: Reload_SSH_Service
-      ansible.builtin.service:
+      ansible.builtin.systemd_service:
+        daemon_reload: true
         name: ssh
         state: restarted
+        enabled: true
