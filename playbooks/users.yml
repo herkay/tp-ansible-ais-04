@@ -7,7 +7,7 @@
     - name: Add_Admin_User
       ansible.builtin.user:
         append: true
-        group: sudo
+        groups: sudo
         name: "{{ admin_user }}"
         password: "{{ password }}"
         shell: /bin/bash
